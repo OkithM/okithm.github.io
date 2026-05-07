@@ -10,27 +10,32 @@
 
 <body>
   <nav class="fixed top-4 inset-x-0 mx-auto w-[95%] z-50">
-  <div class="flex items-center justify-between px-6 py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-lg shadow-lg -skew-x-15">
-    
-    <!-- Left Side: Logo/Name -->
-    <div class="text-white text-2xl tracking-tight font-mono">
-      OkithM
-    </div>
+    <div
+      class="flex items-center justify-between px-6 py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-lg shadow-lg -skew-x-15">
 
-    <!-- Right Side: Navigation Links -->
-    <div class="flex items-center gap-6 text-white/90 font-medium">
-      <a href="#me" class="hover:text-white transition-colors">Me</a>
-      <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-    </div>
+      <a href="#landing" class="text-white text-2xl tracking-tight font-mono">
+        OkithM
+      </a>
+      <div class="flex items-center gap-6 text-white/90 font-medium">
+        <a href="#me" class="hover:text-white transition-colors">Me</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
 
-  </div>
-</nav>
+    </div>
+  </nav>
 
   <div id="landing" class="flex flex-col justify-center items-center h-screen bg-black">
     <canvas id="landingCanvas"></canvas>
+    <button id="aboutMeBtn" onclick="toAboutMe()">About Me</button>
   </div>
-  <script type="module" src="/src/main.js"></script>
+
+  <div id="me" class="flex flex-col justify-center items-center h-screen bg-black">
+    <div class="text-white text-2xl tracking-tight font-mono">
+      Okith Moksha
+    </div>
+  </div>
+  <script src="/src/main.js"></script>
 </body>
 
 </html>

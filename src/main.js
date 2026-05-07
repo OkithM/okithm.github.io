@@ -1,5 +1,6 @@
 const landingCanvas = document.getElementById("landingCanvas");
 const ctx = landingCanvas.getContext("2d");
+const aboutMeBtn = document.getElementById("aboutMeBtn");
 
 landingCanvas.width = window.innerWidth;
 landingCanvas.height = window.innerHeight;
@@ -34,20 +35,64 @@ for (let x = 0; x < columns; x++) {
     rainDrops[x] = 1; // Start all drops at the top
 }
 
-function drawMyName(){
-    const x = landingCanvas.width - 400;
+function drawMyName() {
+    const xStart = landingCanvas.width - 400;
     const Y = landingCanvas.height / 2;
-    ctx.fillStyle = '#FF0000';
-    ctx.font = '80px "Sakana"';
+    const fontName = '"Sakana"';
+    const bigSize = 80;
+    const smallSize = 65;
+
+    // Pre-calculate positions so the strokes and fills align perfectly
+    ctx.font = `${bigSize}px ${fontName}`;
+    const widthO = ctx.measureText("O").width;
+
+    ctx.font = `${smallSize}px ${fontName}`;
+    const widthKith = ctx.measureText("KITH").width;
+
+    const xKith = xStart + widthO;
+    const xM = xKith + widthKith;
+
+    // --- 1. STROKE PASS ---
     ctx.strokeStyle = "black";
     ctx.lineJoin = "round";
+
+    // Stroke "O"
+    ctx.font = `${bigSize}px ${fontName}`;
     ctx.lineWidth = 40;
-    ctx.strokeText("OkithM", x, Y);
-    ctx.fillText("OkithM", x, Y);
+    ctx.strokeText("O", xStart, Y);
+
+    // Stroke "KITH"
+    ctx.font = `${smallSize}px ${fontName}`;
+    ctx.lineWidth = 25; // Thinner stroke for smaller text
+    ctx.strokeText("KITH", xKith, Y);
+
+    // Stroke "M"
+    ctx.font = `${bigSize}px ${fontName}`;
+    ctx.lineWidth = 40;
+    ctx.strokeText("M", xM, Y);
+
+    // --- 2. FILL PASS ---
+    ctx.fillStyle = '#FF0000';
+
+    // Fill "O"
+    ctx.font = `${bigSize}px ${fontName}`;
+    ctx.fillText("O", xStart, Y);
+
+    // Fill "KITH"
+    ctx.font = `${smallSize}px ${fontName}`;
+    ctx.fillText("KITH", xKith, Y);
+
+    // Fill "M"
+    ctx.font = `${bigSize}px ${fontName}`;
+    ctx.fillText("M", xM, Y);
+
+    // --- 3. SUBTEXT (Okith Moksha) ---
+    // Drawing this last so it sits on top of everything
     ctx.font = '40px arial';
-    ctx.lineWidth = 20; 
-    ctx.strokeText("Okith Moksha", x+80 , Y + 40);
-    ctx.fillText("Okith Moksha", x+80 , Y + 40);
+    ctx.lineWidth = 20;
+    ctx.strokeStyle = "black";
+    ctx.strokeText("Okith Moksha", xStart + 55, Y + 40);
+    ctx.fillText("Okith Moksha", xStart + 55, Y + 40);
 }
 
 const draw = () => {
@@ -90,8 +135,24 @@ const draw = () => {
         ctx.drawImage(img, x, 0, newWidth, newHeight);
 
         drawMyName();
+        
+        if (aboutMeBtn) {
+            aboutMeBtn.style.display = "block";
+
+            // Dynamically update position to follow the canvas text
+            const xStart = landingCanvas.width - 400;
+            const Y = landingCanvas.height / 2;
+
+            aboutMeBtn.style.left = (xStart + 150) + "px";
+            aboutMeBtn.style.top = (Y + 75) + "px";
+        }
     }
 };
 
 // Run the draw function roughly 30 times per second
 setInterval(draw, 30);
+
+function toAboutMe() {
+    console.log("Redirecting to about me page...");
+    
+}

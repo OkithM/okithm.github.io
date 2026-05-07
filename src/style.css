@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+#aboutMeBtn {
+    position: absolute;
+    
+    padding: 10px 25px;
+    background-color: #FF0000;
+    color: white;
+    border: 2px solid black;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s, background-color 0.2s;
+    border-radius: 8px;
+    
+    display: none; 
+}
+
+#aboutMeBtn:hover {
+    background-color: black;
+    color: #FF0000;
+    transform: scale(1.05);
+}
