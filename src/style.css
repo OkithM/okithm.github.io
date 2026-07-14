@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
+:root {
+    color: white;
+}
+
+@utility btn-primary {
+    @apply bg-transparent text-white border-2 border-red-500/50 px-8 py-2 rounded-lg font-mono hover:bg-red-500/50 transition-colors;
+}
+
+@utility tect-stack-item {
+    @apply flex-col items-center gap-2
+}
+
 #aboutMeBtn {
     position: absolute;
-    
+
     padding: 10px 25px;
     background-color: #FF0000;
     color: white;
@@ -13,8 +25,8 @@
     text-transform: uppercase;
     transition: transform 0.2s, background-color 0.2s;
     border-radius: 8px;
-    
-    display: none; 
+
+    display: none;
 }
 
 #aboutMeBtn:hover {
