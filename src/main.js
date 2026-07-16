@@ -1,3 +1,5 @@
+import { projects } from './projects.js';
+
 const landingCanvas = document.getElementById("landingCanvas");
 const ctx = landingCanvas.getContext("2d");
 const aboutMeBtn = document.getElementById("aboutMeBtn");
@@ -147,3 +149,46 @@ setInterval(draw, 30);
 window.toAboutMe = function () {
     document.getElementById("me")?.scrollIntoView({ behavior: "auto" });
 };
+
+function renderProjects() {
+    const container = document.getElementById("projects-container");
+    if (!container) return;
+
+    container.innerHTML = projects.map(project => `
+        <div class="project-item border-2 border-red-500/50 p-4 rounded-lg font-mono flex flex-col md:flex-row gap-4">
+          <!-- Image Section -->
+          <div
+            style="background-image: url('${project.image}'); height: 300px; width: 300px; border-radius: 8px; background-size: cover; background-position: top; flex-shrink: 0;">
+          </div>
+
+          <!-- Content Section -->
+          <div class="flex flex-col justify-between flex-1">
+            <div>
+              <div>
+                <div class="text-red-500 text-2xl font-mono mb-2">${project.title}</div>
+                <div class="text-white/90 text-lg font-mono mb-4">
+                  ${project.description}
+                </div>
+              </div>
+              <!-- Tech Stack -->
+              <div class="flex flex-col items-start justify-between">
+                <div class="text-md text-red-500 font-mono">${project.tech}</div>
+              </div>
+            </div>
+            ${project.link ? `
+            <a href="${project.link}" target="_blank"
+              rel="noopener noreferrer" class="btn-primary flex items-center gap-2 w-fit cursor-pointer">
+              ${project.linkLabel || 'View'}<i data-lucide="arrow-right" class="h-5"></i>
+            </a>
+            ` : ''}
+          </div>
+        </div>
+    `).join('');
+
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+}
+
+// Render projects on script load
+renderProjects();
