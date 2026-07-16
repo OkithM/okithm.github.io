@@ -11,8 +11,8 @@ export const projects = [
         title: "Hidden Note",
         description: "",
         image: "/projectImg/HiddenNote.webp",
-        tech: "Flutter • Dart • JSON Data Management",
-        link: "https://play.google.com/store/apps/details?id=com.okith.hiddennote&hl=en&pli=1",
-        linkLabel: "View on Play Store"
+        tech: "",
+        link: "http://hiddennote.app/",
+        linkLabel: "Visit Website"
     }
 ];
