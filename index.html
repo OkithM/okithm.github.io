@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="myLogo.svg" type="image/x-icon">
   <title>Okith Moksha</title>
-  <script type="module" crossorigin src="/assets/index-ZJJJd0nu.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CzL_Mvxm.css">
+  <script type="module" crossorigin src="/assets/index-CkrMRzWL.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CQr8gzKO.css">
 </head>
 
 <body>
@@ -14,15 +15,14 @@
     <div
       class="flex items-center justify-between px-6 py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-lg shadow-lg -skew-x-15">
 
-      <a href="#landing" class="text-white text-2xl tracking-tight font-mono">
-        OkithM
+      <a href="#landing" class="text-white text-2xl tracking-tight font-mono flex gap-3">
+        <img src="myLogo.svg" alt="" width="30">OkithM
       </a>
       <div class="flex items-center gap-6 text-white/90 font-medium">
         <a href="#me" class="hover:text-white transition-colors">Me</a>
         <a href="#projects" class="hover:text-white transition-colors">Projects</a>
         <a href="#contact" class="hover:text-white transition-colors">Contact</a>
       </div>
-
     </div>
   </nav>
 
@@ -39,7 +39,7 @@
       <br>
       <p class="text-white/90 text-lg tracking-tight font-mono">
         I'm a Computer Science student and developer who loves building things that live on the internet. From crafting
-        multi-platform mobile apps with Flutter to designing sleek digital assets and diving into cybersecurity CTFs, I
+        multi-platform mobile apps with Flutter to designing sleek digital assets and diving into cybersecurity, I
         enjoy turning complex ideas into clean, functional code. When I'm not debugging or tweaking UI layouts, you can
         usually find me exploring new tech or gaming
       </p>
@@ -90,12 +90,20 @@
           </div>
         </div>
       </div>
-      <br>
-      <button class="btn-primary">
-        <a href="/files/Okith Moksha Resume.pdf" class=" flex items-center gap-2 justify-center">RESUME<i
-            data-lucide="download" class="h-5"></i></a></button>
+      <a href="/files/Okith Moksha Resume.pdf" target="_blank" rel="noopener noreferrer"
+        class="btn-primary flex items-center gap-2 justify-center w-fit cursor-pointer">
+        RESUME<i data-lucide="download" class="h-5"></i>
+      </a>
     </div>
 
+  </div>
+  <div id="projects" class="flex flex-col justify-center items-center h-screen bg-black p-10">
+    <div class="max-w-7xl w-full">
+      <div class="w-full text-left text-red-500 text-5xl tracking-tight font-mono italic">My Projects</div>
+      <br>
+      <div id="projects-container" class="flex flex-col gap-10"></div>
+    </div>
+  </div>
   </div>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
