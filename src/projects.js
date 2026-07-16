@@ -9,10 +9,12 @@ export const projects = [
     },
     {
         title: "Hidden Note",
-        description: "",
-        image: "/projectImg/HiddenNote.webp",
-        tech: "",
+        description: "Built a social-sharing web application to let users share secret messages and receive anonymous feedback, enhancing user engagement and privacy with dynamic shareable gradient cards and custom comment-visibility controls , by developing the app using Vanilla JavaScript, Cloud Firestore, and Firebase Authentication.",
+        image: "/projectImg/hiddenNote.webp",
+        tech: "Vanilla JS • Firebase (Firestore/Auth) • HTML Canvas",
         link: "http://hiddennote.app/",
         linkLabel: "Visit Website"
     }
 ];
+
+
