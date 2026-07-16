@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Okith Moksha</title>
+  <script type="module" crossorigin src="/okithm.github.io/assets/index-wCyuAfSF.js"></script>
+  <link rel="stylesheet" crossorigin href="/okithm.github.io/assets/index-C45_6vMv.css">
+</head>
+
+<body>
+  <nav class="fixed top-4 inset-x-0 mx-auto w-[95%] z-50">
+    <div
+      class="flex items-center justify-between px-6 py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-lg shadow-lg -skew-x-15">
+
+      <a href="#landing" class="text-white text-2xl tracking-tight font-mono">
+        OkithM
+      </a>
+      <div class="flex items-center gap-6 text-white/90 font-medium">
+        <a href="#me" class="hover:text-white transition-colors">Me</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <div id="landing" class="flex flex-col justify-center items-center h-screen bg-black">
+    <canvas id="landingCanvas"></canvas>
+    <button id="aboutMeBtn" onclick="toAboutMe()">About Me</button>
+  </div>
+
+  <div id="me" class="flex flex-col justify-center items-center h-screen bg-black">
+    <div class="max-w-4xl">
+      <div class="text-red-500 text-5xl tracking-tight font-mono italic">
+        Who Am I
+      </div>
+      <br>
+      <p class="text-white/90 text-lg tracking-tight font-mono">
+        I'm a Computer Science student and developer who loves building things that live on the internet. From crafting
+        multi-platform mobile apps with Flutter to designing sleek digital assets and diving into cybersecurity CTFs, I
+        enjoy turning complex ideas into clean, functional code. When I'm not debugging or tweaking UI layouts, you can
+        usually find me exploring new tech or gaming
+      </p>
+      <br>
+      <div>
+        <div class="text-red-500 text-2xl tracking-tight font-mono italic">Tec Stack</div>
+        <br>
+        <div class="flex flex-wrap gap-4">
+          <div class="flex-1 border-2 border-red-500/50 px-4 py-2 rounded-lg font-mono flex justify-around">
+            <div class="tect-stack-item">
+              <img src="https://cdn.simpleicons.org/flutter/ffffff" alt="Flutter" height="40" width="40" />Flutter
+            </div>
+            <div class="tect-stack-item">
+              <img src="https://cdn.simpleicons.org/python/ffffff" alt="Python" height="40" width="40" />Python
+            </div>
+            <div class="tect-stack-item">
+              <img src="https://cdn.simpleicons.org/javascript/ffffff" alt="JS" height="40" width="40" />JavaScript
+            </div>
+            <div class="tect-stack-item">
+              <img src="https://cdn.simpleicons.org/nodedotjs/ffffff" alt="Node.js" height="40" width="40" />Node.js
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button class="btn-primary">
+        <a href="" class=" flex items-center gap-2 justify-center">RESUME<i data-lucide="download"
+            class="h-5"></i></a></button>
+    </div>
+
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
+</html>
