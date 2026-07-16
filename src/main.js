@@ -10,20 +10,12 @@ window.addEventListener("resize", () => {
     landingCanvas.height = window.innerHeight;
 });
 
+import backgroundImg from './assets/images/Background.png';
+
 const img = new Image();
-img.src = "/src/assets/images/background.png";
+img.src = backgroundImg;
 var isDrawImage = false;
 
-const fontFaceStyle = document.createElement("style");
-fontFaceStyle.textContent = `
-@font-face {
-    font-family: "Sakana";
-    src: url("/src/assets/fonts/Sakana.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-}
-`;
-document.head.appendChild(fontFaceStyle);
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 const fontSize = 18;
@@ -135,7 +127,7 @@ const draw = () => {
         ctx.drawImage(img, x, 0, newWidth, newHeight);
 
         drawMyName();
-        
+
         if (aboutMeBtn) {
             aboutMeBtn.style.display = "block";
 
@@ -152,7 +144,6 @@ const draw = () => {
 // Run the draw function roughly 30 times per second
 setInterval(draw, 30);
 
-function toAboutMe() {
-    console.log("Redirecting to about me page...");
-    
-}
+window.toAboutMe = function () {
+    document.getElementById("me")?.scrollIntoView({ behavior: "auto" });
+};
