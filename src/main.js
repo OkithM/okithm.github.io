@@ -7,6 +7,8 @@ const loaderBar = document.getElementById("loader-bar")
 let currentProgress = 0;
 let resourcesLoaded = false;
 
+loaderWrapper.classList.add("fade-out")
+
 const progressInterval = setInterval(() => {
   const increment = resourcesLoaded ? 3 : Math.min(1, 6 / currentProgress);
   currentProgress = Math.min(currentProgress + increment, 100);

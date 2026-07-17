@@ -236,3 +236,169 @@ html {
         height: 200px !important;
     }
 }
+
+/* ===================== CONTACT SECTION ===================== */
+.contact-tagline {
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 1rem;
+    margin-top: 0.75rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.contact-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 0, 0, 0.25);
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.06) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.contact-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.contact-card:hover::before {
+    opacity: 1;
+}
+
+.contact-card--email {
+    cursor: pointer;
+    user-select: none;
+}
+
+.contact-card__icon-wrap {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 0, 0.12);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.contact-card:hover .contact-card__icon-wrap {
+    background: rgba(255, 0, 0, 0.22);
+    border-color: rgba(255, 0, 0, 0.5);
+}
+
+.contact-card__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.contact-card__label {
+    font-family: monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 0, 0, 0.8);
+    margin-bottom: 0.2rem;
+}
+
+.contact-card__value {
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.contact-card__action {
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-card:hover .contact-card__action {
+    color: rgba(255, 0, 0, 0.8);
+    transform: translate(2px, -2px);
+}
+
+.contact-action-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.contact-linkedin-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+    color: white;
+    stroke: white;
+}
+
+/* "Copied!" flash */
+.contact-card__copied {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 0, 0.18);
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: #ff4444;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.contact-card__copied.show {
+    opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    #contact {
+        padding: 80px 16px 40px !important;
+    }
+
+    #contact .text-5xl {
+        font-size: 2rem !important;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card__value {
+        font-size: 0.85rem;
+    }
+}
