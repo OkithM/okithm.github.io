@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="myLogo.svg" type="image/x-icon">
   <title>Okith Moksha</title>
-  <script type="module" crossorigin src="/assets/index-CZYqXTn_.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BSHkUBIZ.css">
+  <script type="module" crossorigin src="/assets/index-DNeRr9m0.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BbHtBYz_.css">
 </head>
 
 <body>
@@ -48,10 +48,10 @@
 
   <div id="landing" class="flex flex-col justify-center items-center h-screen bg-black">
     <canvas id="landingCanvas"></canvas>
-    <button id="aboutMeBtn" onclick="toAboutMe()">About Me</button>
+    <a id="aboutMeBtn" href="#me">About Me</a>
   </div>
 
-  <div id="me" class="flex flex-col justify-center items-center h-screen bg-black p-10">
+  <div id="me" class="flex flex-col justify-center items-center min-h-screen bg-black p-10">
     <div class="max-w-4xl w-full">
       <div class="text-red-500 text-5xl tracking-tight font-mono italic">
         Who Am I
@@ -117,20 +117,87 @@
     </div>
 
   </div>
-  <div id="projects" class="flex flex-col justify-center items-center h-screen bg-black p-10">
-    <div class="max-w-7xl w-full">
+  <div id="projects" class="flex flex-col justify-center items-center min-h-screen bg-black p-10">
+    <div class="max-w-5xl w-full">
       <div class="w-full text-left text-red-500 text-5xl tracking-tight font-mono italic">My Projects</div>
       <br>
       <div id="projects-container" class="flex flex-col gap-10"></div>
     </div>
   </div>
   </div>
-  <div id="contact" class="flex flex-col justify-center items-center bg-black py-10">
-    <p class="text-white/50 font-mono text-sm">okithmoksha@gmail.com</p>
+  <div id="contact" class="flex flex-col justify-center items-center min-h-screen bg-black py-20 px-10">
+    <div class="contact-inner max-w-4xl w-full">
+
+      <!-- Header -->
+      <div class="w-full text-left text-red-500 text-5xl tracking-tight font-mono italic">Contact Me</div>
+      <p class="contact-tagline">Got a project in mind? Let's build something great together.</p>
+
+      <!-- Contact Cards Grid -->
+      <div class="contact-grid">
+
+        <!-- Email card -->
+        <div class="contact-card contact-card--email" id="emailCard" onclick="copyEmail()" title="Click to copy">
+          <div class="contact-card__icon-wrap">
+            <img src="https://cdn.simpleicons.org/gmail/ffffff" alt="Email" width="28" height="28">
+          </div>
+          <div class="contact-card__body">
+            <div class="contact-card__label">Email</div>
+            <div class="contact-card__value" id="emailValue">okithmoksha@gmail.com</div>
+          </div>
+          <div class="contact-card__action">
+            <i data-lucide="copy" class="contact-action-icon" id="copyIcon"></i>
+          </div>
+          <div class="contact-card__copied" id="copiedMsg">Copied!</div>
+        </div>
+
+        <!-- GitHub card -->
+        <a href="https://github.com/OkithM" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-card__icon-wrap">
+            <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" width="28" height="28">
+          </div>
+          <div class="contact-card__body">
+            <div class="contact-card__label">GitHub</div>
+            <div class="contact-card__value">OkithM</div>
+          </div>
+          <div class="contact-card__action">
+            <i data-lucide="arrow-up-right" class="contact-action-icon"></i>
+          </div>
+        </a>
+
+        <!-- LinkedIn card -->
+        <a href="https://www.linkedin.com/in/okith-moksha" target="_blank" rel="noopener noreferrer"
+          class="contact-card">
+          <div class="contact-card__icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </div>
+          <div class="contact-card__body">
+            <div class="contact-card__label">LinkedIn</div>
+            <div class="contact-card__value">okith-moksha</div>
+          </div>
+          <div class="contact-card__action">
+            <i data-lucide="arrow-up-right" class="contact-action-icon"></i>
+          </div>
+        </a>
+
+      </div><!-- /contact-grid -->
+    </div>
   </div>
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    function copyEmail() {
+      const email = 'okithmoksha@gmail.com';
+      navigator.clipboard.writeText(email).then(function () {
+        const msg = document.getElementById('copiedMsg');
+        if (!msg) return;
+        msg.classList.add('show');
+        setTimeout(function () { msg.classList.remove('show'); }, 1600);
+      });
+    }
   </script>
 </body>
 
