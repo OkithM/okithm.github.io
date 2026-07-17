@@ -9,17 +9,13 @@
 
 html {
     scroll-behavior: auto;
-    scroll-snap-type: y mandatory;
 }
 
 :root {
     color: white;
 }
 
-.h-screen {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-}
+
 
 /* On very small screens, relax snap so content isn't clipped */
 @media (max-width: 640px) {

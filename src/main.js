@@ -194,9 +194,6 @@ const draw = () => {
 // Run the draw function roughly 30 times per second
 setInterval(draw, 30);
 
-window.toAboutMe = function () {
-  document.getElementById("me")?.scrollIntoView({ behavior: "smooth" });
-};
 
 // Hamburger menu
 window.toggleNav = function () {

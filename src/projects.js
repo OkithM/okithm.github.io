@@ -14,7 +14,7 @@ export const projects = [
         tech: "Vanilla JS • Firebase (Firestore/Auth) • HTML Canvas",
         link: "http://hiddennote.app/",
         linkLabel: "Visit Website"
-    }
+    },
 ];
 
 
