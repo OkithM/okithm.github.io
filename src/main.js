@@ -8,7 +8,7 @@ let currentProgress = 0;
 let resourcesLoaded = false;
 
 const progressInterval = setInterval(() => {
-  const increment = resourcesLoaded ? 3 : 1;
+  const increment = resourcesLoaded ? 3 : Math.min(1, 6 / currentProgress);
   currentProgress = Math.min(currentProgress + increment, 100);
 
   if (percentageEl) {
