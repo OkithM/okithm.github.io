@@ -65,18 +65,29 @@ for (let x = 0; x < columns; x++) {
 }
 
 function drawMyName() {
-  const xStart = landingCanvas.width - 400;
-  const Y = landingCanvas.height / 2;
-  const fontName = '"Sakana"';
-  const bigSize = 80;
-  const smallSize = 65;
+  const isMobile = landingCanvas.width < 640;
 
-  // Pre-calculate positions so the strokes and fills align perfectly
+  const bigSize = isMobile ? 70 : 80;
+  const smallSize = isMobile ? 56 : 65;
+  const fontName = '"Sakana"';
+  const Y = landingCanvas.height / 2;
+
+  // Measure total width so we can centre on mobile
   ctx.font = `${bigSize}px ${fontName}`;
   const widthO = ctx.measureText("O").width;
 
   ctx.font = `${smallSize}px ${fontName}`;
   const widthKith = ctx.measureText("KITH").width;
+
+  ctx.font = `${bigSize}px ${fontName}`;
+  const widthM = ctx.measureText("M").width;
+
+  const totalWidth = widthO + widthKith + widthM;
+
+  // Desktop: right-aligned; Mobile: centred
+  const xStart = isMobile
+    ? (landingCanvas.width - totalWidth) / 2
+    : landingCanvas.width - 400;
 
   const xKith = xStart + widthO;
   const xM = xKith + widthKith;
@@ -85,43 +96,41 @@ function drawMyName() {
   ctx.strokeStyle = "black";
   ctx.lineJoin = "round";
 
-  // Stroke "O"
   ctx.font = `${bigSize}px ${fontName}`;
-  ctx.lineWidth = 40;
+  ctx.lineWidth = isMobile ? 28 : 40;
   ctx.strokeText("O", xStart, Y);
 
-  // Stroke "KITH"
   ctx.font = `${smallSize}px ${fontName}`;
-  ctx.lineWidth = 25; // Thinner stroke for smaller text
+  ctx.lineWidth = isMobile ? 18 : 25;
   ctx.strokeText("KITH", xKith, Y);
 
-  // Stroke "M"
   ctx.font = `${bigSize}px ${fontName}`;
-  ctx.lineWidth = 40;
+  ctx.lineWidth = isMobile ? 28 : 40;
   ctx.strokeText("M", xM, Y);
 
   // --- 2. FILL PASS ---
   ctx.fillStyle = '#FF0000';
 
-  // Fill "O"
   ctx.font = `${bigSize}px ${fontName}`;
   ctx.fillText("O", xStart, Y);
 
-  // Fill "KITH"
   ctx.font = `${smallSize}px ${fontName}`;
   ctx.fillText("KITH", xKith, Y);
 
-  // Fill "M"
   ctx.font = `${bigSize}px ${fontName}`;
   ctx.fillText("M", xM, Y);
 
-  // --- 3. SUBTEXT (Okith Moksha) ---
-  // Drawing this last so it sits on top of everything
-  ctx.font = '40px arial';
-  ctx.lineWidth = 20;
+  // --- 3. SUBTEXT ---
+  const subSize = isMobile ? 30 : 40;
+  const subX = isMobile ? xStart : xStart + 55;
+  const subY = Y + (isMobile ? 45 : 40);
+
+  ctx.font = `${subSize}px arial`;
+  ctx.lineWidth = isMobile ? 14 : 20;
   ctx.strokeStyle = "black";
-  ctx.strokeText("Okith Moksha", xStart + 55, Y + 40);
-  ctx.fillText("Okith Moksha", xStart + 55, Y + 40);
+  ctx.strokeText("Okith Moksha", subX, subY);
+  ctx.fillStyle = '#FF0000';
+  ctx.fillText("Okith Moksha", subX, subY);
 }
 
 const draw = () => {
@@ -150,30 +159,34 @@ const draw = () => {
     rainDrops[i]++;
   }
   if (isDrawImage) {
-    // Calculate the scale factor (the smaller of width or height ratios)
     const scale = Math.max(landingCanvas.width / img.width, landingCanvas.height / img.height);
-
-    // Calculate the new dimensions
     const newWidth = img.width * scale;
     const newHeight = img.height * scale;
+    const isMobile = landingCanvas.width < 640;
 
-    // Optional: Center the image
-    const x = (landingCanvas.width - newWidth);
-    const y = (landingCanvas.height - newHeight);
-
-    ctx.drawImage(img, x, 0, newWidth, newHeight);
+    if (!isMobile) {
+      const x = (landingCanvas.width - newWidth);
+      ctx.drawImage(img, x, 0, newWidth, newHeight);
+    }
 
     drawMyName();
 
     if (aboutMeBtn) {
-      aboutMeBtn.style.display = "block";
-
-      // Dynamically update position to follow the canvas text
-      const xStart = landingCanvas.width - 400;
-      const Y = landingCanvas.height / 2;
-
-      aboutMeBtn.style.left = (xStart + 150) + "px";
-      aboutMeBtn.style.top = (Y + 75) + "px";
+      if (isMobile) {
+        // Use CSS class — button is in normal flow below canvas
+        aboutMeBtn.classList.add("visible");
+        aboutMeBtn.style.display = "block";
+        const xStart = landingCanvas.width - 400;
+        const Y = landingCanvas.height / 2;
+        aboutMeBtn.style.left = (xStart + 60) + "px";
+        aboutMeBtn.style.top = (Y + 100) + "px";
+      } else {
+        aboutMeBtn.style.display = "block";
+        const xStart = landingCanvas.width - 400;
+        const Y = landingCanvas.height / 2;
+        aboutMeBtn.style.left = (xStart + 150) + "px";
+        aboutMeBtn.style.top = (Y + 75) + "px";
+      }
     }
   }
 };
@@ -182,7 +195,21 @@ const draw = () => {
 setInterval(draw, 30);
 
 window.toAboutMe = function () {
-  document.getElementById("me")?.scrollIntoView({ behavior: "auto" });
+  document.getElementById("me")?.scrollIntoView({ behavior: "smooth" });
+};
+
+// Hamburger menu
+window.toggleNav = function () {
+  const nav = document.getElementById("navLinks");
+  const btn = document.getElementById("hamburger");
+  if (!nav || !btn) return;
+  nav.classList.toggle("open");
+  btn.classList.toggle("open");
+};
+
+window.closeNav = function () {
+  document.getElementById("navLinks")?.classList.remove("open");
+  document.getElementById("hamburger")?.classList.remove("open");
 };
 
 function renderProjects() {
@@ -192,7 +219,7 @@ function renderProjects() {
   container.innerHTML = projects.map(project => `
         <div class="project-item border-2 border-red-500/50 p-4 rounded-lg font-mono flex flex-col md:flex-row gap-4">
           <!-- Image Section -->
-          <div
+          <div class="project-image"
             style="background-image: url('${project.image}'); height: 300px; width: 300px; border-radius: 8px; background-size: cover; background-position: top; flex-shrink: 0;">
           </div>
 

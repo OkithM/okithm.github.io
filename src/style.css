@@ -21,6 +21,21 @@ html {
     scroll-snap-stop: always;
 }
 
+/* On very small screens, relax snap so content isn't clipped */
+@media (max-width: 640px) {
+    html {
+        scroll-snap-type: none;
+    }
+
+    .h-screen {
+        height: auto;
+        min-height: 100svh;
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+        padding-top: 80px;
+    }
+}
+
 @utility btn-primary {
     @apply bg-transparent text-white border-2 border-red-500/50 px-8 py-2 rounded-lg font-mono hover:bg-red-500/50 transition-colors;
 }
@@ -51,6 +66,7 @@ html {
     color: #FF0000;
     transform: scale(1.05);
 }
+
 
 /* Loader Styles */
 .loader-wrapper {
@@ -107,5 +123,120 @@ html {
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* ===================== HAMBURGER MENU ===================== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    z-index: 60;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 640px) {
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        position: fixed;
+        right: 0;
+        top: 65px;
+        width: 50%;
+        height: 50%;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        padding-right: 1.5rem;
+        font-size: 1.5rem;
+        z-index: 50;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+}
+
+/* ===================== SECTION RESPONSIVE ===================== */
+@media (max-width: 640px) {
+
+    /* Landing section */
+    #landing {
+        height: 100svh;
+        padding-top: 70px;
+    }
+
+    /* "Me" section text scaling */
+    #me .text-5xl {
+        font-size: 2rem !important;
+    }
+
+    #me .text-lg {
+        font-size: 0.95rem !important;
+    }
+
+    #me .text-2xl {
+        font-size: 1.25rem !important;
+    }
+
+    #me {
+        height: auto !important;
+        min-height: 100svh;
+        padding: 80px 16px 32px !important;
+    }
+
+    /* Projects section */
+    #projects {
+        height: auto !important;
+        min-height: 100svh;
+        padding: 80px 16px 32px !important;
+    }
+
+    #projects .text-5xl {
+        font-size: 2rem !important;
+    }
+
+    .project-item {
+        flex-direction: column !important;
+    }
+
+    .project-image {
+        width: 100% !important;
+        height: 200px !important;
     }
 }

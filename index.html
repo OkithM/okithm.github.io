@@ -28,11 +28,20 @@
       <a href="#landing" class="text-white text-2xl tracking-tight font-mono flex gap-3">
         <img src="myLogo.svg" alt="" width="30">OkithM
       </a>
-      <div class="flex items-center gap-6 text-white/90 font-medium">
-        <a href="#me" class="hover:text-white transition-colors">Me</a>
-        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+
+      <!-- Desktop nav links -->
+      <div class="nav-links text-white/90 font-medium" id="navLinks">
+        <a href="#me" class="hover:text-white transition-colors" onclick="closeNav()">Me</a>
+        <a href="#projects" class="hover:text-white transition-colors" onclick="closeNav()">Projects</a>
+        <a href="#contact" class="hover:text-white transition-colors" onclick="closeNav()">Contact</a>
       </div>
+
+      <!-- Hamburger button (mobile only) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" onclick="toggleNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
@@ -114,6 +123,9 @@
       <div id="projects-container" class="flex flex-col gap-10"></div>
     </div>
   </div>
+  </div>
+  <div id="contact" class="flex flex-col justify-center items-center bg-black py-10">
+    <p class="text-white/50 font-mono text-sm">okithmoksha@gmail.com</p>
   </div>
   <script type="module" src="/src/main.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
