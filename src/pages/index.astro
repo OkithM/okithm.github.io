@@ -31,22 +31,31 @@ import SocialMediaIcon from "../components/SocialMediaIcon.astro";
 
     <div
       id="about"
-      class="flex-row pt-20 w-full flex items-center justify-center pr-40 pl-40"
+      class="flex-row pt-20 w-full flex items-center justify-center pr-40 pl-30"
     >
-      <div class="max-w-10 flex-col gap-10 mr-20">
-        <SocialMediaIcon name="mdi:whatsapp" href="https://wa.me/1234567890" />
+      <div class="max-w-10 flex-col gap-10 mr-10">
+        <SocialMediaIcon name="mdi:whatsapp" href="https://wa.me/+9476400728" />
+        <div class="h-4"></div>
+        <SocialMediaIcon name="mdi:linkedin" href="https://www.linkedin.com/in/okith-moksha/" />
+        <div class="h-4"></div>
+        <SocialMediaIcon name="mdi:github" href="https://github.com/okithm" />
+        <div class="h-4"></div>
+        <SocialMediaIcon name="mdi:twitter" href="https://twitter.com/okithmoksha" />
+        <div class="h-4"></div>
+        <SocialMediaIcon name="mdi:gmail" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=okithmoksha@gmail.com" />
       </div>
-      <div class="mr-auto px-4 sm:px-6 lg:px-8">
+      <div class="mr-auto sm:px-6">
         <p class="text-lg bg-card border border-white/10 max-w-fit px-5 py-1 rounded-2xl">👋 Hello, I'm</p>
         <div class="h-2"></div>
         <h1 class="text-5xl font-bold">Okith <span class="text-accentRed">Moksha</span></h1>
-        <p class="text-3xl mt-2 text-slate-400">Crafting High-Performance<span class="text-accentRed"> Mobile & Web</span> <br>Experiences.</p>
+        <p class="text-3xl mt-2 text-slate-400">Crafting High-Performance <br><span class="text-accentRed">Mobile & Web</span> Experiences.</p>
         <div class="h-4"></div>
         <p>Full-Stack Developer (Flutter, React, Supabase), Cybersecurity CTF Competitor, and Digital Visual Designer. Studying Computer Science at University of Ruhuna, Sri Lanka.</p>
       </div>
-      <div class="min-w-120">
-        <Terminal title="okith@dev:~" />
+      <div class="min-w-120 h-120 flex items-center justify-center bg-card border border-white/10 rounded-2xl shadow-lg shadow-black/30">
+        <Terminal title="okith@dev" />
       </div>
     </div>
+    <div class="h-4000"></div>
   </body>
 </html>

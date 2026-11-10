@@ -4,7 +4,7 @@ import ButtonPrimary from "./ButtonPrimary.astro";
 
 <!-- Header Wrapper -->
 <header id="main-header" class="sticky top-0 z-50 w-full pt-4 transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)]">
-    <div id="header-inner" class="mx-auto max-w-7xl px-4 transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)] sm:px-6 lg:px-8">
+    <div id="header-inner" class="mx-auto max-w-5xl px-4 transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)] sm:px-6 lg:px-8">
         <nav 
             id="nav-bar" 
             class="flex flex-wrap items-center justify-between gap-5 border rounded-2xl border-white/10 bg-pitch/80 px-6 py-4 shadow-xl shadow-black/30 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)]" 
@@ -39,14 +39,14 @@ import ButtonPrimary from "./ButtonPrimary.astro";
         if (window.scrollY > 20) {
             // Scrolled State: Full width, flush top, square corners
             header?.classList.remove('pt-4');
-            headerInner?.classList.remove('max-w-7xl', 'px-4', 'sm:px-6', 'lg:px-8');
+            headerInner?.classList.remove('max-w-5xl', 'px-4', 'sm:px-6', 'lg:px-8');
             headerInner?.classList.add('max-w-full', 'px-0');
             navBar?.classList.remove('rounded-2xl', 'shadow-xl');
             navBar?.classList.add('rounded-none', 'border-x-0', 'border-t-0', 'px-8');
         } else if (window.scrollY < 10) {
             // Top State: Floating island card
             header?.classList.add('pt-4');
-            headerInner?.classList.add('max-w-7xl', 'px-4', 'sm:px-6', 'lg:px-8');
+            headerInner?.classList.add('max-w-5xl', 'px-4', 'sm:px-6', 'lg:px-8');
             headerInner?.classList.remove('max-w-full', 'px-0');
             navBar?.classList.add('rounded-2xl', 'shadow-xl');
             navBar?.classList.remove('rounded-none', 'border-x-0', 'border-t-0', 'px-8');

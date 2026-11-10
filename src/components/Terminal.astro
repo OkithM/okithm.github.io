@@ -1,39 +1,67 @@
 ---
 interface Props {
   title?: string;
+  command?: string;
 }
 
-const { title = "okith@dev-box:~" } = Astro.props;
+const { title = "okith@dev" } = Astro.props;
 ---
 
-<div class="w-full rounded-2xl bg-dark-950 border border-zinc-800/90 shadow-2xl overflow-hidden font-mono text-sm">
+<div class="w-full h-full rounded-2xl bg-[#111211] border border-red-950/80 shadow-2xl overflow-hidden font-mono text-sm">
   <!-- Window Header Bar -->
-  <div class="flex items-center justify-between px-4 py-3 bg-dark-900 border-b border-zinc-800/80">
+  <div class="flex items-center justify-between px-5 py-3 bg-[#0b0c0c] border-b border-zinc-800/80">
     <div class="flex items-center gap-2">
-      <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-      <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-      <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+      <span class="w-3.5 h-3.5 rounded-full bg-[#ef393c] inline-block"></span>
+      <span class="w-3.5 h-3.5 rounded-full bg-[#e4aa09] inline-block"></span>
+      <span class="w-3.5 h-3.5 rounded-full bg-[#10a477] inline-block"></span>
     </div>
-    <div class="text-xs text-zinc-400 font-medium">{title}</div>
-    <div class="text-xs text-zinc-600">bash</div>
+    <div class="text-sm text-zinc-400 font-medium"><span class="text-red-500 mr-2">›_</span>{title}</div>
+    <div class="text-sm text-zinc-600">zsh</div>
   </div>
 
   <!-- Terminal Output Area -->
-  <div id="terminal-body" class="p-5 min-h-80 max-h-105 overflow-y-auto space-y-3 text-zinc-300">
-    <div>
-      <span class="text-accent-red font-bold">Okith Shell v2.0</span> — Type <span class="text-white underline underline-offset-4 decoration-accent-red">help</span> to list commands.
+  <div id="terminal-body" class="p-6 min-h-80 max-h-105 overflow-y-auto space-y-5 text-zinc-300">
+    <div class="flex items-center gap-2 text-base mb-2">
+      <span class="text-red-500">{title}</span><span class="text-zinc-500">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
+      <span class="text-zinc-100">cat profile.json</span>
+    </div>
+
+    <div class="ml-2 mb-2">
+      <div><span class="text-red-500">"developer"</span>: <span class="text-zinc-100">"Okith Ranaweera"</span>,</div>
+      <div><span class="text-red-500">"location"</span>: <span class="text-zinc-100">"Matara, Sri Lanka LK"</span>,</div>
+      <div><span class="text-red-500">"education"</span>: <span class="text-zinc-100">"BSc Computer Science @ Ruhuna"</span>,</div>
+      <div><span class="text-red-500">"focus"</span>: [</div>
+      <div class="pl-5 text-emerald-400">"Flutter Cross-Platform",</div>
+      <div class="pl-5 text-sky-400">"React & Supabase Web Stack",</div>
+      <div class="pl-5 text-emerald-400">"Cybersecurity & Web Exploitation",</div>
+      <div class="pl-5 text-purple-400">"Vector Design & Branding"</div>
+      <div>],</div>
+      <div><span class="text-red-500">"status"</span>: <span class="text-emerald-400">"Building high-impact solutions"</span></div>
+    </div>
+
+    <div class="flex items-center gap-2 text-base">
+      <span class="text-red-500">{title}</span><span class="text-zinc-500">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
+      <span class="text-zinc-100">./run_top_app.sh</span>
+    </div>
+
+    <div class="flex items-center gap-3 rounded-xl border border-zinc-300 bg-[#702b29] px-3 py-3">
+      <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff3e46] text-xl text-black">♟</div>
+      <div class="leading-tight">
+        <div class="font-sans font-bold text-zinc-100">Focus Track App</div>
+        <div class="text-sm text-zinc-400">10,000+ Downloads on Google Play</div>
+      </div>
+      <span class="ml-auto rounded-md bg-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">LIVE</span>
     </div>
 
     <div id="terminal-history" class="space-y-3"></div>
-
     <!-- Active Input Line -->
-    <div class="flex items-center gap-2 pt-2">
-      <span class="text-accent-red font-bold">okith@dev-box:~$</span>
+    <div class="flex items-center gap-2">
+      <span class="text-red-500">{title}</span><span class="text-zinc-500">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
       <input
         type="text"
         id="terminal-input"
-        class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent-red"
-        placeholder="Try 'whoami' or 'skills'..."
+        class="flex-1 min-w-0 bg-transparent border-none outline-none text-white font-mono caret-red-500"
+        placeholder="Type a command..."
         autocomplete="off"
         spellcheck="false"
       />
@@ -47,40 +75,44 @@ const { title = "okith@dev-box:~" } = Astro.props;
 
   const commands: Record<string, string> = {
     help: "Available commands:\n  <span class='text-accent-red'>whoami</span>    - View developer identity\n  <span class='text-accent-red'>skills</span>    - List core tech stack\n  <span class='text-accent-red'>projects</span>  - Highlighted builds\n  <span class='text-accent-red'>ctf</span>       - Security competition records\n  <span class='text-accent-red'>clear</span>     - Clear terminal buffer",
-    whoami: "Okith Ranaweera | Computer Science Undergraduate @ University of Ruhuna\nRole: Flutter & Web Developer, Security Enthusiast, Designer",
+    whoami: "Okith Moksha | Computer Science Undergraduate @ University of Ruhuna\nRole: Flutter & Web Developer, Security Enthusiast, Designer",
     skills: "Core Skills:\n• Flutter / Dart / Supabase\n• React / Vite / Tailwind CSS\n• Graphic Design (Affinity Suite / Krita)\n• Linux / Reverse Engineering / CTF Forensics",
-    projects: "Featured Projects:\n1. Focus Track (Flutter app - 10k+ Play Store downloads)\n2. WatchCircle (Social Movie & TV Tracker)\n3. SyncStory (Cross-platform Audiobook Sync)\n4. Hidden Note (Firebase Web App)",
+    projects: "Featured Projects:\n1. Focus Track (Flutter app - 20k+ Play Store downloads)\n2. SyncStory (Cross-platform Audiobook Sync)\n3. Hidden Note (Firebase Web App)",
     ctf: "CTF Team: NULLVØID / Byte Breach\nSpecialities: Digital Forensics, Web Exploitation, Reverse Engineering\nEvents: REDCYPHER 3.0, ANIMUS 1.0 Tech Team",
+  };
+
+  const runCommand = (command: string) => {
+    if (!command) return;
+
+    const line = document.createElement("div");
+    line.className = "space-y-1";
+
+    if (command === "clear") {
+      if (history) history.innerHTML = "";
+    } else {
+      const output = commands[command]
+        ? commands[command].replace(/\n/g, "<br/>")
+        : `<span class="text-red-400">Command not found: '${command}'. Type 'help' for options.</span>`;
+
+      line.innerHTML = `
+        <div class="flex items-center gap-2">
+          <span class="text-red-500">okith@ruhuna-cs:~$</span>
+          <span class="text-white">${command}</span>
+        </div>
+        <div class="pl-4 text-zinc-400 leading-relaxed">${output}</div>
+      `;
+      history?.appendChild(line);
+    }
+
+    const body = document.getElementById("terminal-body");
+    if (body) body.scrollTop = body.scrollHeight;
   };
 
   input?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      const command = input.value.trim().toLowerCase();
-      if (!command) return;
-
-      const line = document.createElement("div");
-      line.className = "space-y-1";
-
-      if (command === "clear") {
-        if (history) history.innerHTML = "";
-      } else {
-        const output = commands[command] 
-          ? commands[command].replace(/\n/g, "<br/>")
-          : `<span class="text-red-400">Command not found: '${command}'. Type 'help' for options.</span>`;
-
-        line.innerHTML = `
-          <div class="flex items-center gap-2">
-            <span class="text-accent-red font-bold">okith@dev-box:~$</span>
-            <span class="text-white">${command}</span>
-          </div>
-          <div class="pl-4 text-zinc-400 leading-relaxed">${output}</div>
-        `;
-        history?.appendChild(line);
-      }
-
+      runCommand(input.value.trim().toLowerCase());
       input.value = "";
-      const body = document.getElementById("terminal-body");
-      if (body) body.scrollTop = body.scrollHeight;
     }
   });
+
 </script>
