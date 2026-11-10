@@ -1,25 +1,52 @@
 ---
 import "../styles/global.css";
-import Navigation from "../components/navigation.astro"
+import Navigation from "../components/navigation.astro";
+import Terminal from "../components/Terminal.astro";
+import SocialMediaIcon from "../components/SocialMediaIcon.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/myLogo.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Okith Moksha</title>
-	</head>
-	<body class="bg-pitch text-slate-100 font-sans selection:background-accentRed selection:text-white relative min-h-screen overflow-x-hidden">
-
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/myLogo.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Okith Moksha</title>
+  </head>
+  <body
+    class="bg-pitch text-slate-100 font-sans selection:background-accentRed selection:text-white relative min-h-screen overflow-x-hidden"
+  >
     <!-- Ambient Red Lighting Effects -->
-    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-accentRed/10 blur-[150px] pointer-events-none rounded-full z-0"></div>
-    <div class="fixed bottom-0 right-0 w-125 h-125 bg-accentRed/5 blur-[180px] pointer-events-none rounded-full z-0"></div>
+    <div
+      class="fixed top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-accentRed/10 blur-[150px] pointer-events-none rounded-full z-0"
+    >
+    </div>
+    <div
+      class="fixed bottom-0 right-0 w-125 h-125 bg-accentRed/5 blur-[180px] pointer-events-none rounded-full z-0"
+    >
+    </div>
 
-	<Navigation></Navigation>
+    <Navigation />
 
-<div class="h-1000 w-100 "></div>
-</body>
+    <div
+      id="about"
+      class="flex-row pt-20 w-full flex items-center justify-center pr-40 pl-40"
+    >
+      <div class="max-w-10 flex-col gap-10 mr-20">
+        <SocialMediaIcon name="mdi:whatsapp" href="https://wa.me/1234567890" />
+      </div>
+      <div class="mr-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-lg bg-card border border-white/10 max-w-fit px-5 py-1 rounded-2xl">👋 Hello, I'm</p>
+        <div class="h-2"></div>
+        <h1 class="text-5xl font-bold">Okith <span class="text-accentRed">Moksha</span></h1>
+        <p class="text-3xl mt-2 text-slate-400">Crafting High-Performance<span class="text-accentRed"> Mobile & Web</span> <br>Experiences.</p>
+        <div class="h-4"></div>
+        <p>Full-Stack Developer (Flutter, React, Supabase), Cybersecurity CTF Competitor, and Digital Visual Designer. Studying Computer Science at University of Ruhuna, Sri Lanka.</p>
+      </div>
+      <div class="min-w-120">
+        <Terminal title="okith@dev:~" />
+      </div>
+    </div>
+  </body>
 </html>
