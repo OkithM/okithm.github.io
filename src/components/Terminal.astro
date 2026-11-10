@@ -1,0 +1,86 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "okith@dev-box:~" } = Astro.props;
+---
+
+<div class="w-full rounded-2xl bg-dark-950 border border-zinc-800/90 shadow-2xl overflow-hidden font-mono text-sm">
+  <!-- Window Header Bar -->
+  <div class="flex items-center justify-between px-4 py-3 bg-dark-900 border-b border-zinc-800/80">
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+      <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+      <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+    </div>
+    <div class="text-xs text-zinc-400 font-medium">{title}</div>
+    <div class="text-xs text-zinc-600">bash</div>
+  </div>
+
+  <!-- Terminal Output Area -->
+  <div id="terminal-body" class="p-5 min-h-80 max-h-105 overflow-y-auto space-y-3 text-zinc-300">
+    <div>
+      <span class="text-accent-red font-bold">Okith Shell v2.0</span> — Type <span class="text-white underline underline-offset-4 decoration-accent-red">help</span> to list commands.
+    </div>
+
+    <div id="terminal-history" class="space-y-3"></div>
+
+    <!-- Active Input Line -->
+    <div class="flex items-center gap-2 pt-2">
+      <span class="text-accent-red font-bold">okith@dev-box:~$</span>
+      <input
+        type="text"
+        id="terminal-input"
+        class="flex-1 bg-transparent border-none outline-none text-white font-mono caret-accent-red"
+        placeholder="Try 'whoami' or 'skills'..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  const input = document.getElementById("terminal-input") as HTMLInputElement;
+  const history = document.getElementById("terminal-history");
+
+  const commands: Record<string, string> = {
+    help: "Available commands:\n  <span class='text-accent-red'>whoami</span>    - View developer identity\n  <span class='text-accent-red'>skills</span>    - List core tech stack\n  <span class='text-accent-red'>projects</span>  - Highlighted builds\n  <span class='text-accent-red'>ctf</span>       - Security competition records\n  <span class='text-accent-red'>clear</span>     - Clear terminal buffer",
+    whoami: "Okith Ranaweera | Computer Science Undergraduate @ University of Ruhuna\nRole: Flutter & Web Developer, Security Enthusiast, Designer",
+    skills: "Core Skills:\n• Flutter / Dart / Supabase\n• React / Vite / Tailwind CSS\n• Graphic Design (Affinity Suite / Krita)\n• Linux / Reverse Engineering / CTF Forensics",
+    projects: "Featured Projects:\n1. Focus Track (Flutter app - 10k+ Play Store downloads)\n2. WatchCircle (Social Movie & TV Tracker)\n3. SyncStory (Cross-platform Audiobook Sync)\n4. Hidden Note (Firebase Web App)",
+    ctf: "CTF Team: NULLVØID / Byte Breach\nSpecialities: Digital Forensics, Web Exploitation, Reverse Engineering\nEvents: REDCYPHER 3.0, ANIMUS 1.0 Tech Team",
+  };
+
+  input?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const command = input.value.trim().toLowerCase();
+      if (!command) return;
+
+      const line = document.createElement("div");
+      line.className = "space-y-1";
+
+      if (command === "clear") {
+        if (history) history.innerHTML = "";
+      } else {
+        const output = commands[command] 
+          ? commands[command].replace(/\n/g, "<br/>")
+          : `<span class="text-red-400">Command not found: '${command}'. Type 'help' for options.</span>`;
+
+        line.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="text-accent-red font-bold">okith@dev-box:~$</span>
+            <span class="text-white">${command}</span>
+          </div>
+          <div class="pl-4 text-zinc-400 leading-relaxed">${output}</div>
+        `;
+        history?.appendChild(line);
+      }
+
+      input.value = "";
+      const body = document.getElementById("terminal-body");
+      if (body) body.scrollTop = body.scrollHeight;
+    }
+  });
+</script>
