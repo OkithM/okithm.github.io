@@ -16,7 +16,7 @@ const { title = "okith@dev" } = Astro.props;
       <span class="w-3.5 h-3.5 rounded-full bg-[#10a477] inline-block"></span>
     </div>
     <div class="text-sm text-zinc-400 font-medium"><span class="text-red-500 mr-2">›_</span>{title}</div>
-    <div class="text-sm text-zinc-600">zsh</div>
+    <div class="text-sm text-zinc-600">fish</div>
   </div>
 
   <!-- Terminal Output Area -->
@@ -44,16 +44,17 @@ const { title = "okith@dev" } = Astro.props;
       <span class="text-zinc-100">./run_top_app.sh</span>
     </div>
 
-    <div class="flex items-center gap-3 rounded-xl border border-zinc-300 bg-[#702b29] px-3 py-3">
+    <a href="https://play.google.com/store/apps/details?id=com.okithm.focustrack" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-xl border border-zinc-300 bg-[#702b29] px-3 py-3">
       <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-[#ff3e46] text-xl text-black">♟</div>
       <div class="leading-tight">
         <div class="font-sans font-bold text-zinc-100">Focus Track App</div>
-        <div class="text-sm text-zinc-400">10,000+ Downloads on Google Play</div>
+        <div class="text-sm text-zinc-400">20,000+ Downloads on Google Play</div>
       </div>
       <span class="ml-auto rounded-md bg-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-400">LIVE</span>
-    </div>
+    </a>
 
     <div id="terminal-history" class="space-y-3"></div>
+
     <!-- Active Input Line -->
     <div class="flex items-center gap-2">
       <span class="text-red-500">{title}</span><span class="text-zinc-500">:</span><span class="text-emerald-400">~</span><span class="text-zinc-400">$</span>
@@ -69,6 +70,31 @@ const { title = "okith@dev" } = Astro.props;
   </div>
 </div>
 
+<style>
+  /* Terminal Scrollbar Styling */
+  #terminal-body {
+    scrollbar-width: thin;
+    scrollbar-color: #27272a #111211;
+  }
+
+  #terminal-body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #terminal-body::-webkit-scrollbar-track {
+    background: #111211;
+  }
+
+  #terminal-body::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 9999px;
+  }
+
+  #terminal-body::-webkit-scrollbar-thumb:hover {
+    background: #ef393c;
+  }
+</style>
+
 <script>
   const input = document.getElementById("terminal-input") as HTMLInputElement;
   const history = document.getElementById("terminal-history");
@@ -76,7 +102,7 @@ const { title = "okith@dev" } = Astro.props;
   const commands: Record<string, string> = {
     help: "Available commands:\n  <span class='text-accent-red'>whoami</span>    - View developer identity\n  <span class='text-accent-red'>skills</span>    - List core tech stack\n  <span class='text-accent-red'>projects</span>  - Highlighted builds\n  <span class='text-accent-red'>ctf</span>       - Security competition records\n  <span class='text-accent-red'>clear</span>     - Clear terminal buffer",
     whoami: "Okith Moksha | Computer Science Undergraduate @ University of Ruhuna\nRole: Flutter & Web Developer, Security Enthusiast, Designer",
-    skills: "Core Skills:\n• Flutter / Dart / Supabase\n• React / Vite / Tailwind CSS\n• Graphic Design (Affinity Suite / Krita)\n• Linux / Reverse Engineering / CTF Forensics",
+    skills: "Core Skills:\n• Flutter / Dart / Supabase\n• React / Vite / Tailwind CSS\n• Graphic Design (Affinity Suite / Photoshop)\n• Linux / Reverse Engineering / CTF Forensics",
     projects: "Featured Projects:\n1. Focus Track (Flutter app - 20k+ Play Store downloads)\n2. SyncStory (Cross-platform Audiobook Sync)\n3. Hidden Note (Firebase Web App)",
     ctf: "CTF Team: NULLVØID / Byte Breach\nSpecialities: Digital Forensics, Web Exploitation, Reverse Engineering\nEvents: REDCYPHER 3.0, ANIMUS 1.0 Tech Team",
   };
@@ -96,7 +122,7 @@ const { title = "okith@dev" } = Astro.props;
 
       line.innerHTML = `
         <div class="flex items-center gap-2">
-          <span class="text-red-500">okith@ruhuna-cs:~$</span>
+          <span class="text-red-500">okith@dev:~$</span>
           <span class="text-white">${command}</span>
         </div>
         <div class="pl-4 text-zinc-400 leading-relaxed">${output}</div>
@@ -114,5 +140,4 @@ const { title = "okith@dev" } = Astro.props;
       input.value = "";
     }
   });
-
 </script>

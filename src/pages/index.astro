@@ -1,8 +1,10 @@
 ---
 import "../styles/global.css";
+import { Icon } from "astro-icon/components";
 import Navigation from "../components/navigation.astro";
 import Terminal from "../components/Terminal.astro";
 import SocialMediaIcon from "../components/SocialMediaIcon.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
 <html lang="en">
@@ -54,6 +56,36 @@ import SocialMediaIcon from "../components/SocialMediaIcon.astro";
       </div>
       <div class="min-w-120 h-120 flex items-center justify-center bg-card border border-white/10 rounded-2xl shadow-lg shadow-black/30">
         <Terminal title="okith@dev" />
+      </div>
+    </div>
+    <div class="h-40"></div>
+
+    <div id="projects" class="snap-always min-h-dvh px-30 py-20 flex flex-col justify-center">
+      <h1 class="text-5xl font-bold">Some of<span class="text-transparent bg-clip-text bg-linear-to-r to-50% from-white to-accentRed"> My Work.</span></h1>
+      <div class="h-2" ></div>
+      <div class="flex flex-row items-center">
+        <Icon name="mdi:chart-bar-stacked" class="h-4 w-4 mr-2 text-accentRed" title="Engineered for Impact" />
+        <p class="font-thin text-accentRed">Engineered for Impact</p>
+      </div>
+      <p></p>
+      <div class="h-5"></div>
+      <div class="grid grid-cols-2 grid-rows-2 gap-4">
+        <ProjectCard
+          title="Focus Track"
+          description="A productivity app that helps users stay focused and track their time effectively."
+          image="/projects/focus-track.webp"
+          Url="https://play.google.com/store/apps/details?id=com.okithm.focustrack"
+          UrlName="View on Google Play"
+          tags={["Flutter", "Mobile","Google Play"]}
+        />
+        <ProjectCard
+          title="Hidden Note"
+          description="A secure note-taking web application built with Firebase, allowing users share a qusion with others and get anonimus replis."
+          image="/projects/hidden-note.png"
+          UrlName="Visit Website"
+          Url="https://hiddennote.app/"
+          tags={["React", "Firebase"]}
+        />
       </div>
     </div>
     <div class="h-4000"></div>

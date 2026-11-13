@@ -4,12 +4,12 @@ interface Props {
   description: string;
   image: string;
   tags: string[];
-  demoUrl?: string;
-  githubUrl?: string;
+  Url?: string;
+  UrlName?: string;
   badge?: string;
 }
 
-const { title, description, image, tags, demoUrl, githubUrl, badge } = Astro.props;
+const { title, description, image, tags, Url, UrlName, badge } = Astro.props;
 ---
 
 <div class="group relative rounded-2xl bg-dark-900/70 border border-zinc-800/80 hover:border-accent-red/50 overflow-hidden backdrop-blur-md transition-all duration-300 flex flex-col h-full hover:shadow-[0_0_30px_rgba(255,51,68,0.15)]">
@@ -21,7 +21,7 @@ const { title, description, image, tags, demoUrl, githubUrl, badge } = Astro.pro
       class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/30 to-transparent"></div>
+    <div class="absolute inset-0 bg-linear-to-t from-dark-900 via-dark-900/30 to-transparent"></div>
     {badge && (
       <span class="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full bg-accent-red/20 text-accent-red border border-accent-red/40 backdrop-blur-md">
         {badge}
@@ -30,11 +30,11 @@ const { title, description, image, tags, demoUrl, githubUrl, badge } = Astro.pro
   </div>
 
   <!-- Content -->
-  <div class="p-6 flex flex-col flex-grow">
+  <div class="p-6 flex flex-col grow">
     <h3 class="text-xl font-bold text-white group-hover:text-accent-red transition-colors duration-200">
       {title}
     </h3>
-    <p class="mt-2 text-sm text-zinc-400 line-clamp-3 flex-grow leading-relaxed">
+    <p class="mt-2 text-sm text-zinc-400 line-clamp-3 grow leading-relaxed">
       {description}
     </p>
 
@@ -49,26 +49,15 @@ const { title, description, image, tags, demoUrl, githubUrl, badge } = Astro.pro
 
     <!-- Actions -->
     <div class="mt-6 flex items-center gap-3 pt-4 border-t border-zinc-800/60">
-      {demoUrl && (
+      {Url && (
         <a
-          href={demoUrl}
+          href={Url}
           target="_blank"
           rel="noopener noreferrer"
           class="flex-1 inline-flex justify-center items-center gap-2 py-2 text-xs font-semibold rounded-lg bg-red-gradient text-white hover:opacity-90 shadow-red-sm transition-all"
         >
-          <span>Live Demo</span>
+          <span>{UrlName || "View Project"}</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      )}
-      {githubUrl && (
-        <a
-          href={githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="p-2 text-zinc-400 hover:text-white rounded-lg bg-dark-800 border border-zinc-800 hover:border-zinc-700 transition-colors"
-          aria-label="View Source Code"
-        >
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
       )}
     </div>
