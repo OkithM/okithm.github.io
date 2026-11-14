@@ -1,10 +1,8 @@
 ---
 import "../styles/global.css";
-import { Icon } from "astro-icon/components";
 import Navigation from "../components/navigation.astro";
 import Terminal from "../components/Terminal.astro";
 import SocialMediaIcon from "../components/SocialMediaIcon.astro";
-import ProjectCard from "../components/ProjectCard.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 ---
 
@@ -18,7 +16,7 @@ import ProjectsSection from "../components/ProjectsSection.astro";
     <title>Okith Moksha</title>
   </head>
   <body
-    class="bg-pitch text-slate-100 font-sans selection:background-accentRed selection:text-white relative min-h-screen overflow-x-hidden"
+    class="bg-pitch text-slate-100 font-sans selection:bg-accentRed selection:text-white relative min-h-screen overflow-x-hidden"
   >
     <div id="about"></div>
     <!-- Ambient Red Lighting Effects -->
@@ -33,8 +31,9 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 
     <Navigation />
 
-    <div
-      class="flex-row pt-20 w-full flex items-center justify-center pr-40 pl-30"
+    <!-- Hero Section -->
+    <section
+      class="min-h-[calc(100vh-5rem)] flex-row py-12 w-full flex items-center justify-center pr-40 pl-30 relative z-10"
     >
       <div class="max-w-10 flex-col gap-10 mr-10">
         <SocialMediaIcon name="mdi:whatsapp" href="https://wa.me/+9476400728" />
@@ -47,22 +46,32 @@ import ProjectsSection from "../components/ProjectsSection.astro";
         <div class="h-4"></div>
         <SocialMediaIcon name="mdi:gmail" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=okithmoksha@gmail.com" />
       </div>
+
       <div class="mr-auto sm:px-6">
-        <p class="text-lg bg-card border border-white/10 max-w-fit px-5 py-1 rounded-2xl">👋 Hello, I'm</p>
+        <p class="text-lg bg-card border border-white/10 max-w-fit px-5 py-1 rounded-2xl">
+          Hello, I'm
+        </p>
         <div class="h-2"></div>
-        <h1 class="text-5xl font-bold">Okith <span class="text-accentRed">Moksha</span></h1>
-        <p class="text-3xl mt-2 text-slate-400">Crafting High-Performance <br><span class="text-accentRed">Mobile & Web</span> Experiences.</p>
+        <h1 class="text-5xl font-bold">
+          Okith <span class="text-accentRed">Moksha</span>
+        </h1>
+        <p class="text-3xl mt-2 text-slate-400">
+          Crafting High-Performance <br /><span class="text-accentRed">Mobile & Web</span> Experiences.
+        </p>
         <div class="h-4"></div>
-        <p>Full-Stack Developer (Flutter, React, Supabase), Cybersecurity CTF Competitor, and Digital Visual Designer. Studying Computer Science at University of Ruhuna, Sri Lanka.</p>
+        <p class="text-slate-300 max-w-xl leading-relaxed">
+          Full-Stack Developer (Flutter, React, Supabase), Cybersecurity CTF Competitor, and Digital Visual Designer. Studying Computer Science at University of Ruhuna, Sri Lanka.
+        </p>
       </div>
+
       <div class="min-w-120 h-120 flex items-center justify-center bg-card border border-white/10 rounded-2xl shadow-lg shadow-black/30">
         <Terminal title="okith@dev" />
       </div>
-    </div>
-    <div class="h-40"></div>
-    <div id="projects">
-      <ProjectsSection/>
-    </div>
+    </section>
+
+    <!-- Projects Section (100vh + Snap) -->
+    <ProjectsSection />
+
     <div class="h-200"></div>
   </body>
 </html>
