@@ -1,0 +1,479 @@
+---
+interface Project {
+  id: string;
+  index: string;
+  title: string;
+  shortTitle: string;
+  mark: string;
+  category: string;
+  tagline: string;
+  status: string;
+  description: string;
+  tech: string[];
+  image: string;
+  liveUrl: string;
+  liveLabel: string;
+  repoUrl?: string;
+}
+
+const projects: Project[] = [
+  {
+    id: 'focus-track',
+    index: '01',
+    title: 'FOCUS TRACK',
+    shortTitle: 'FOCUS TRACK',
+    mark: 'FT',
+    category: 'MOBILE APP // PRODUCTIVITY',
+    tagline: 'ENGINEERED FOR DEEP WORK & STUDY CONSISTENCY',
+    status: 'LIVE • 20K+ DOWNLOADS',
+    description:
+      'A cross-platform productivity application built with Flutter that helps students structure deep-focus sessions, track daily study streaks, and analyze time effectively.',
+    tech: ['Flutter', 'Dart', 'Local DB', 'Google Play'],
+    image: '/images/projects/focus-track-bg.png',
+    liveUrl: 'https://play.google.com/store',
+    liveLabel: 'VIEW ON GOOGLE PLAY'
+  },
+  {
+    id: 'hidden-note',
+    index: '02',
+    title: 'HIDDEN NOTE',
+    shortTitle: 'HIDDEN NOTE',
+    mark: 'HN',
+    category: 'WEB APP // ANONYMOUS SOCIAL',
+    tagline: 'REAL-TIME ENCRYPTED Q&A MESSAGING LINKS',
+    status: 'LIVE WEB APP',
+    description:
+      'A secure anonymous messaging platform built with React and Firebase, enabling users to share custom prompt links and receive real-time anonymous replies with bot protection.',
+    tech: ['React', 'Tailwind CSS', 'Firebase', 'Firestore'],
+    image: '/images/projects/hidden-note-bg.png',
+    liveUrl: 'https://hiddennote.app',
+    liveLabel: 'LAUNCH WEBSITE'
+  },
+  {
+    id: 'sync-story',
+    index: '03',
+    title: 'SYNCSTORY',
+    shortTitle: 'SYNCSTORY',
+    mark: 'SS',
+    category: 'CROSS-PLATFORM // AUDIO UTILITY',
+    tagline: 'SERVERLESS AUDIOBOOK PROGRESS SYNCHRONIZATION',
+    status: 'DESKTOP & ANDROID',
+    description:
+      'A serverless audiobook companion for Android and Windows that automatically syncs playback timestamps across devices using Google Drive OAuth 2.0 and Supabase.',
+    tech: ['Flutter', 'Supabase', 'Google Drive API', 'OAuth 2.0'],
+    image: '/images/projects/sync-story-bg.png',
+    liveUrl: 'https://github.com/okithm',
+    liveLabel: 'EXPLORE PROJECT',
+    repoUrl: 'https://github.com/okithm'
+  },
+  {
+    id: 'spot-finder',
+    index: '04',
+    title: 'SPOTFINDER',
+    shortTitle: 'SPOTFINDER',
+    mark: 'SF',
+    category: 'WEB APP // GEOLOCATION',
+    tagline: 'REAL-TIME INTERACTIVE WILDLIFE SIGHTING MAP',
+    status: 'SERVERLESS PWA',
+    description:
+      'A mobile-first serverless web application designed for pinning, filtering, and sharing real-time local animal sightings on a high-performance interactive map.',
+    tech: ['TypeScript', 'Tailwind CSS', 'Serverless', 'Maps API'],
+    image: '/images/projects/spot-finder-bg.png',
+    liveUrl: 'https://github.com/okithm',
+    liveLabel: 'LAUNCH WEBSITE',
+    repoUrl: 'https://github.com/okithm'
+  }
+];
+---
+
+<section
+  id="projects"
+  class="relative min-h-screen w-full bg-[#09090b] text-white overflow-hidden flex flex-col justify-between border-t border-white/6 select-none"
+>
+  <!-- RIGHT-HALF FULL-BLEED BACKGROUND VISUAL -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <!-- Project Background Image -->
+    <img
+      id="stage-bg-image"
+      src={projects[0].image}
+      alt={projects[0].title}
+      class="absolute right-0 top-0 h-full w-full lg:w-[68%] object-cover object-center opacity-55 transition-all duration-500 scale-100"
+      onerror="this.style.opacity='0';"
+    />
+
+    <!-- Decorative Cyber Grid + Crimson Ambient Glow (Always visible & acts as rich fallback) -->
+    <div
+      class="absolute right-0 top-0 h-full w-full lg:w-[70%] bg-[radial-gradient(circle_at_72%_45%,rgba(239,35,60,0.22),transparent_62%)]"
+    ></div>
+    <div
+      class="absolute inset-0 opacity-[0.14]"
+      style="background-image: linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 48px 48px;"
+    ></div>
+
+    <!-- Smooth Gradient Vignettes Blending Visual Into Dark Left Content -->
+    <div class="hidden lg:block absolute inset-0 bg-linear-to-r from-[#09090b] via-[#09090b]/85 to-transparent"></div>
+    <div class="lg:hidden absolute inset-0 bg-linear-to-t from-[#09090b] via-[#09090b]/90 to-[#09090b]/60"></div>
+    <div class="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-[#09090b] to-transparent"></div>
+    <div class="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-[#09090b] to-transparent"></div>
+
+    <!-- GIANT WATERMARK INDEX NUMBER (Bottom Right) -->
+    <div
+      id="stage-watermark"
+      class="absolute -bottom-8 right-6 md:right-14 font-mono font-black text-[11rem] sm:text-[16rem] lg:text-[22rem] leading-none text-[#ef233c]/12 tracking-tighter transition-all duration-300"
+    >
+      01
+    </div>
+  </div>
+
+  <!-- TOP HUD BAR -->
+  <div class="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 pt-10 flex flex-wrap items-center justify-between gap-4">
+    <div class="space-y-1">
+      <p class="font-mono text-[11px] tracking-[0.22em] text-[#ef233c] uppercase">
+        OKITH // PROJECT ARCHIVE
+      </p>
+      <p class="font-mono text-xs tracking-[0.18em] text-zinc-400 uppercase">
+        [ CLICK ANY PROJECT TAB BELOW TO INSPECT ]
+      </p>
+    </div>
+
+    <p class="hidden sm:block font-mono text-xs tracking-[0.2em] text-zinc-500 uppercase">
+      FOUR BUILDS. ONE STANDARD.
+    </p>
+  </div>
+
+  <!-- MAIN CONTENT STAGE -->
+  <div class="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 my-auto py-10">
+    <!-- Section Title -->
+    <h2 class="text-4xl sm:text-5xl md:text-6xl font-light tracking-[0.14em] uppercase text-white mb-10">
+      Some of My Work<span class="text-[#ef233c] font-bold">.</span>
+    </h2>
+
+    <div class="grid lg:grid-cols-[minmax(18rem,25rem)_minmax(0,1fr)] gap-10 xl:gap-16 items-start">
+      <!-- PROJECT SELECTOR (Left Column) -->
+      <div
+        role="tablist"
+        aria-label="Select a project to inspect"
+        class="flex flex-col gap-3"
+      >
+        {projects.map((project, idx) => {
+          const isFirst = idx === 0;
+          return (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={isFirst ? 'true' : 'false'}
+              data-project-tab
+              data-index={idx}
+              class:list={[
+                'group relative w-full flex items-start gap-3.5 p-3.5 sm:p-4 text-left transition-all duration-200 cursor-pointer border backdrop-blur-md',
+                isFirst
+                  ? 'bg-linear-to-r from-[#ef233c]/25 to-[#141419]/95 border-[#ef233c] shadow-[0_0_25px_-5px_rgba(239,35,60,0.5)]'
+                  : 'bg-[#111116]/85 border-white/15 hover:border-[#ef233c]/70 hover:bg-[#181820] hover:translate-x-1'
+              ]}
+            >
+              <span
+                class:list={[
+                  'tab-top-line absolute inset-y-0 left-0 w-0.5 bg-[#ef233c] transition-opacity duration-200',
+                  isFirst ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
+                ]}
+              />
+              <span
+                class:list={[
+                  'tab-mark shrink-0 flex items-center justify-center w-11 h-11 font-mono text-sm font-bold border transition-colors',
+                  isFirst
+                    ? 'bg-[#ef233c] text-white border-[#ef233c]'
+                    : 'bg-white/5 text-zinc-400 border-white/15 group-hover:text-[#ef233c] group-hover:border-[#ef233c]/50'
+                ]}
+              >
+                {project.mark}
+              </span>
+              <span class="min-w-0 flex-1">
+                <span class="flex items-center justify-between gap-2">
+                  <span
+                    class:list={[
+                      'tab-label font-mono text-sm font-semibold tracking-wider truncate transition-colors',
+                      isFirst ? 'text-white' : 'text-zinc-300 group-hover:text-white'
+                    ]}
+                  >
+                    {project.shortTitle}
+                  </span>
+                  <span class="tab-index shrink-0 font-mono text-[10px] text-zinc-500">
+                    {project.index}
+                  </span>
+                </span>
+                <span class="tab-category mt-1 block font-mono text-[10px] tracking-wide text-[#ef233c] truncate">
+                  {project.category}
+                </span>
+                <span class="tab-description mt-2 block text-xs leading-relaxed text-zinc-400 line-clamp-2">
+                  {project.description}
+                </span>
+                <span class="tab-tech mt-2 flex flex-wrap gap-1.5">
+                  {project.tech.slice(0, 2).map((item) => (
+                    <span class="px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wide text-zinc-400 bg-white/5 border border-white/10">
+                      {item}
+                    </span>
+                  ))}
+                </span>
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      <!-- ACTIVE PROJECT DETAILS (Right Column) -->
+      <div id="stage-detail-content" class="max-w-xl lg:pt-2 transition-opacity duration-200">
+      <!-- Project Counter & Category -->
+      <div class="flex flex-wrap items-center gap-3 font-mono text-xs tracking-[0.18em] uppercase mb-3">
+        <span id="stage-counter" class="text-[#ef233c] font-semibold">
+          PROJECT 01 / 04
+        </span>
+        <span class="text-zinc-600">//</span>
+        <span id="stage-category" class="text-emerald-400">
+          {projects[0].category}
+        </span>
+      </div>
+
+      <!-- Massive Display Title -->
+      <h3
+        id="stage-title"
+        class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight uppercase text-white leading-[0.95]"
+      >
+        {projects[0].title}
+      </h3>
+
+      <!-- Tagline -->
+      <p
+        id="stage-tagline"
+        class="mt-4 font-mono text-xs sm:text-sm tracking-[0.16em] uppercase text-[#ef233c] font-semibold"
+      >
+        {projects[0].tagline}
+      </p>
+
+      <!-- Description -->
+      <p
+        id="stage-description"
+        class="mt-4 text-sm sm:text-base text-zinc-300 leading-relaxed max-w-lg"
+      >
+        {projects[0].description}
+      </p>
+
+      <!-- Tech Stack Badges -->
+      <div id="stage-tech" class="mt-5 flex flex-wrap gap-2">
+        {projects[0].tech.map((item) => (
+          <span class="px-2.5 py-1 font-mono text-[11px] tracking-wider uppercase bg-white/5 text-zinc-300 border border-white/10">
+            {item}
+          </span>
+        ))}
+      </div>
+
+      <!-- Primary & Secondary Action Buttons -->
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          id="stage-live-btn"
+          href={projects[0].liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-4 px-7 py-4 bg-[#ef233c]/15 hover:bg-[#ef233c] border border-[#ef233c] text-white font-mono text-xs tracking-[0.2em] uppercase transition-all duration-200 shadow-[0_0_30px_-8px_rgba(239,35,60,0.6)]"
+        >
+          <span id="stage-live-label">{projects[0].liveLabel}</span>
+          <span class="text-sm transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            ↗
+          </span>
+        </a>
+
+        <a
+          id="stage-repo-btn"
+          href={projects[0].repoUrl || '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={[
+            'inline-flex items-center gap-3 px-6 py-4 bg-white/3 hover:bg-white/8 border border-white/15 text-zinc-300 hover:text-white font-mono text-xs tracking-[0.2em] uppercase transition-all duration-200',
+            projects[0].repoUrl ? 'inline-flex' : 'hidden'
+          ]}
+        >
+          <span>SOURCE CODE</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- BOTTOM HUD FOOTER BAR -->
+  <div class="relative z-10 max-w-7xl w-full mx-auto px-6 md:px-12 pb-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/6 pt-5">
+    <!-- Prev / Next Quick Switchers -->
+    <div class="flex items-center gap-3">
+      <button
+        type="button"
+        id="prev-project-btn"
+        class="px-3.5 py-1.5 font-mono text-xs tracking-widest uppercase border border-white/15 bg-white/3 text-zinc-300 hover:border-[#ef233c] hover:text-white transition-colors cursor-pointer"
+      >
+        ← PREV
+      </button>
+      <button
+        type="button"
+        id="next-project-btn"
+        class="px-3.5 py-1.5 font-mono text-xs tracking-widest uppercase border border-white/15 bg-white/3 text-zinc-300 hover:border-[#ef233c] hover:text-white transition-colors cursor-pointer"
+      >
+        NEXT →
+      </button>
+      <span id="stage-status-pill" class="hidden sm:inline-flex items-center gap-2 ml-2 font-mono text-[11px] tracking-wider text-emerald-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        {projects[0].status}
+      </span>
+    </div>
+
+    <div class="font-mono text-xs tracking-[0.2em] text-zinc-400 uppercase flex items-center gap-2.5">
+      <span>SELECT YOUR BUILD</span>
+      <span class="inline-flex items-center justify-center w-6 h-6 rounded-full border border-[#ef233c]/60 text-[#ef233c] font-bold text-[10px]">
+        OM
+      </span>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ projects }}>
+  let currentIndex = 0;
+
+  const tabs = document.querySelectorAll('[data-project-tab]');
+  const detailContainer = document.getElementById('stage-detail-content');
+  const bgImage = document.getElementById('stage-bg-image');
+  const watermark = document.getElementById('stage-watermark');
+
+  const els = {
+    counter: document.getElementById('stage-counter'),
+    category: document.getElementById('stage-category'),
+    title: document.getElementById('stage-title'),
+    tagline: document.getElementById('stage-tagline'),
+    description: document.getElementById('stage-description'),
+    tech: document.getElementById('stage-tech'),
+    liveBtn: document.getElementById('stage-live-btn'),
+    liveLabel: document.getElementById('stage-live-label'),
+    repoBtn: document.getElementById('stage-repo-btn'),
+    statusPill: document.getElementById('stage-status-pill')
+  };
+
+  function renderProject(index) {
+    const project = projects[index];
+    if (!project) return;
+    currentIndex = index;
+
+    // Update all selector tabs
+    tabs.forEach((tab, i) => {
+      const isActive = i === index;
+      tab.setAttribute('aria-selected', String(isActive));
+
+      // Active vs Inactive container classes
+      tab.className = `group relative w-full flex items-start gap-3.5 p-3.5 sm:p-4 text-left transition-all duration-200 cursor-pointer border backdrop-blur-md ${
+        isActive
+          ? 'bg-linear-to-r from-[#ef233c]/25 to-[#141419]/95 border-[#ef233c] shadow-[0_0_25px_-5px_rgba(239,35,60,0.5)]'
+          : 'bg-[#111116]/85 border-white/15 hover:border-[#ef233c]/70 hover:bg-[#181820] hover:translate-x-1'
+      }`;
+
+      const topLine = tab.querySelector('.tab-top-line');
+      const markSpan = tab.querySelector('.tab-mark');
+      const idxSpan = tab.querySelector('.tab-index');
+      const labelSpan = tab.querySelector('.tab-label');
+
+      if (topLine) {
+        topLine.className = `tab-top-line absolute inset-y-0 left-0 w-0.5 bg-[#ef233c] transition-opacity duration-200 ${
+          isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
+        }`;
+      }
+      if (markSpan) {
+        markSpan.className = `tab-mark shrink-0 flex items-center justify-center w-11 h-11 font-mono text-sm font-bold border transition-colors ${
+          isActive
+            ? 'bg-[#ef233c] text-white border-[#ef233c]'
+            : 'bg-white/5 text-zinc-400 border-white/15 group-hover:text-[#ef233c] group-hover:border-[#ef233c]/50'
+        }`;
+      }
+      if (idxSpan) {
+        idxSpan.className = 'tab-index shrink-0 font-mono text-[10px] text-zinc-500';
+      }
+      if (labelSpan) {
+        labelSpan.className = `tab-label font-mono text-sm font-semibold tracking-wider truncate transition-colors ${
+          isActive ? 'text-white' : 'text-zinc-300 group-hover:text-white'
+        }`;
+      }
+    });
+
+    // Smoothly transition left details & right background
+    detailContainer.style.opacity = '0.25';
+    bgImage.style.opacity = '0';
+
+    setTimeout(() => {
+      const total = String(projects.length).padStart(2, '0');
+      els.counter.textContent = `PROJECT ${project.index} / ${total}`;
+      els.category.textContent = project.category;
+      els.title.textContent = project.title;
+      els.tagline.textContent = project.tagline;
+      els.description.textContent = project.description;
+      els.liveBtn.href = project.liveUrl;
+      els.liveLabel.textContent = project.liveLabel;
+      watermark.textContent = project.index;
+
+      if (els.statusPill) {
+        els.statusPill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>${project.status}`;
+      }
+
+      els.tech.innerHTML = project.tech
+        .map(
+          (item) =>
+            `<span class="px-2.5 py-1 font-mono text-[11px] tracking-wider uppercase bg-white/[0.05] text-zinc-300 border border-white/10">${item}</span>`
+        )
+        .join('');
+
+      if (project.repoUrl) {
+        els.repoBtn.href = project.repoUrl;
+        els.repoBtn.classList.remove('hidden');
+        els.repoBtn.classList.add('inline-flex');
+      } else {
+        els.repoBtn.classList.add('hidden');
+        els.repoBtn.classList.remove('inline-flex');
+      }
+
+      // Swap background image
+      bgImage.src = project.image;
+      bgImage.alt = project.title;
+      bgImage.onload = () => {
+        bgImage.style.opacity = '0.55';
+      };
+
+      detailContainer.style.opacity = '1';
+    }, 140);
+  }
+
+  // Tab Click Listeners
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const idx = Number(tab.getAttribute('data-index'));
+      renderProject(idx);
+    });
+  });
+
+  // Prev / Next Button Listeners
+  document.getElementById('prev-project-btn')?.addEventListener('click', () => {
+    const prev = (currentIndex - 1 + projects.length) % projects.length;
+    renderProject(prev);
+  });
+
+  document.getElementById('next-project-btn')?.addEventListener('click', () => {
+    const next = (currentIndex + 1) % projects.length;
+    renderProject(next);
+  });
+
+  // Optional Keyboard Left/Right Arrow Support when section is in view
+  window.addEventListener('keydown', (e) => {
+    const section = document.getElementById('projects');
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
+    if (!isVisible) return;
+
+    if (e.key === 'ArrowRight') {
+      renderProject((currentIndex + 1) % projects.length);
+    } else if (e.key === 'ArrowLeft') {
+      renderProject((currentIndex - 1 + projects.length) % projects.length);
+    }
+  });
+</script>
