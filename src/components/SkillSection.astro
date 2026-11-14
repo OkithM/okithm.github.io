@@ -1,0 +1,197 @@
+---
+import SkillCard from "./SkillCard.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="relative z-10 w-full mx-auto flex flex-col justify-center">
+    <div class="flex flex-col mb-7 md:pl-40 pl-5">
+        <div class="inline-flex w-fit items-center gap-2 text-sm bg-card border border-white/10 px-4 py-1 rounded-2xl text-slate-300 mb-3">
+        <span class="w-2 h-2 rounded-full bg-accentRed"></span>
+        <span>My Skills</span>
+        </div>
+        <h2
+        id="projects-heading"
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white"
+        >
+        Some of My <span class="text-accentRed">Skills</span>
+        </h2>
+    </div>
+    <div class="relative px-5 md:px-20">
+    <button
+        type="button"
+        data-scroll-direction="left"
+        aria-label="Scroll skills left"
+        class="skill-scroll-button absolute left-7 md:left-22 top-1/2 z-10 -translate-y-1/2"
+    >
+        <Icon name="mdi:chevron-left" class="h-6 w-6" />
+    </button>
+    <div id="skills-scroll" class="skill-scroll flex gap-6 justify-start w-full overflow-x-auto overflow-y-hidden pb-3">
+    <div class="md:min-w-20"></div>
+    <SkillCard
+        category="Programming"
+        icon="mdi:code-braces"
+        skills={[
+        { name: "Dart", icon: "devicon:dart" },
+        { name: "JavaScript", icon: "devicon:javascript" },
+        { name: "Python", icon: "devicon:python" },
+        { name: "C#", icon: "devicon:csharp" },
+        { name: "C", icon: "devicon:c" },
+        ]}
+    />
+    <SkillCard
+        category="Frameworks"
+        icon="mdi:layers-triple-outline"
+        skills={[
+        { name: "Flutter", icon: "devicon:flutter" },
+        { name: "Astro", icon: "devicon:astro" },
+        { name: "Tailwind CSS", icon: "devicon:tailwindcss" },
+        { name: "React", icon: "devicon:react" },
+        { name: "Node.js", icon: "devicon:nodejs" },
+        ]}
+    />
+    <SkillCard
+        category="Backend"
+        icon="mdi:database"
+        skills={[
+        { name: "Supabase", icon: "devicon:supabase" },
+        { name: "Firebase", icon: "devicon:firebase" },
+        { name: "MySQL", icon: "devicon:mysql" },
+        { name: "PostgreSQL", icon: "devicon:postgresql" },
+        { name: "Hive (local storage)", icon: "mdi:hexagon-multiple-outline" },
+        ]}
+    />
+    <SkillCard
+        category="Tools"
+        icon="mdi:tools"
+        skills={[
+        { name: "Git", icon: "devicon:git" },
+        { name: "GitHub", icon: "mdi:github" },
+        { name: "Docker", icon: "devicon:docker" },
+        { name: "Linux", icon: "devicon:linux" },
+        { name: "Android Studio", icon: "devicon:androidstudio" },
+        ]}
+    />
+    <SkillCard
+        category="Design"
+        icon="mdi:pencil-ruler"
+        skills={[
+        { name: "Affinity Designer", icon: "simple-icons:affinitydesigner" },
+        { name: "Affinity Photo", icon: "simple-icons:affinityphoto" },
+        { name: "Photoshop", icon: "devicon:photoshop" },
+        { name: "Canva", icon: "devicon:canva" },
+        { name: "Figma", icon: "devicon:figma" },
+        ]}
+    />
+    <SkillCard
+        category="Cybersecurity"
+        icon="mdi:shield-check"
+        skills={[
+        { name: "Digital Forensics", icon: "mdi:file-search-outline" },
+        { name: "Reverse Engineering", icon: "mdi:cog-outline" },
+        { name: "Web Exploitation", icon: "mdi:web" },
+        { name: "Kali Linux", icon: "simple-icons:kalilinux" },
+        { name: "Wireshark", icon: "simple-icons:wireshark" },
+        ]}
+    />
+    <div class="min-w-20"></div>
+    </div>
+    <button
+        type="button"
+        data-scroll-direction="right"
+        aria-label="Scroll skills right"
+        class="skill-scroll-button absolute right-7 md:right-22 top-1/2 z-10 -translate-y-1/2"
+    >
+        <Icon name="mdi:chevron-right" class="h-6 w-6" />
+    </button>
+    </div>
+</section>
+
+<style>
+    .skill-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: #27272a #111211;
+    }
+
+    .skill-scroll::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .skill-scroll::-webkit-scrollbar-track {
+        background: #111211;
+    }
+
+    .skill-scroll::-webkit-scrollbar-thumb {
+        background: #27272a;
+        border-radius: 9999px;
+    }
+
+    .skill-scroll::-webkit-scrollbar-thumb:hover {
+        background: #ef393c;
+    }
+
+    .skill-scroll-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        color: #a1a1aa;
+        background: #111211;
+        border: 1px solid #3f3f46;
+        border-radius: 0.75rem;
+        transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+    }
+
+    .skill-scroll-button:hover:not(:disabled) {
+        color: #ef393c;
+        border-color: #ef393c;
+        background: #18181b;
+    }
+
+    .skill-scroll-button:focus-visible {
+        outline: 2px solid #ef393c;
+        outline-offset: 2px;
+    }
+
+    .skill-scroll-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.35;
+    }
+
+    @media (max-width: 767px) {
+        .skill-scroll-button {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    const skillsScroll = document.getElementById("skills-scroll");
+    const scrollButtons = document.querySelectorAll<HTMLButtonElement>("[data-scroll-direction]");
+
+    const updateScrollButtons = () => {
+        if (!skillsScroll) return;
+
+        const maxScrollLeft = skillsScroll.scrollWidth - skillsScroll.clientWidth;
+        scrollButtons.forEach((button) => {
+            button.disabled = button.dataset.scrollDirection === "left"
+                ? skillsScroll.scrollLeft <= 0
+                : skillsScroll.scrollLeft >= maxScrollLeft - 1;
+        });
+    };
+
+    scrollButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (!skillsScroll) return;
+
+            skillsScroll.scrollBy({
+                left: button.dataset.scrollDirection === "left" ? -320 : 320,
+                behavior: "smooth",
+            });
+        });
+    });
+
+    skillsScroll?.addEventListener("scroll", updateScrollButtons);
+    window.addEventListener("resize", updateScrollButtons);
+    updateScrollButtons();
+</script>

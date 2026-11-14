@@ -2,24 +2,26 @@
 interface Props {
   category: string;
   icon?: string;
-  skills: { name: string; level?: string }[];
+  skills: { name: string; level?: string ; icon?: string }[];
 }
 
-const { category, skills } = Astro.props;
+import { Icon } from 'astro-icon/components';
+
+const { category, icon, skills } = Astro.props;
 ---
 
-<div class="relative rounded-2xl bg-dark-900/60 border border-zinc-800/80 backdrop-blur-md p-6 hover:border-accent-red/30 transition-all duration-300">
+<div class="relative rounded-2xl bg-dark-900/60 border border-zinc-800/80 backdrop-blur-md p-6 hover:border-accent-red/30 transition-all duration-300 w-70 min-w-70">
   <!-- Header -->
   <div class="flex items-center gap-3 mb-4 pb-3 border-b border-zinc-800/60">
-    <div class="w-2.5 h-2.5 rounded-full bg-accent-red shadow-red-sm"></div>
+    <span>{icon && <Icon name={icon} />}</span>
     <h3 class="font-bold text-lg text-white tracking-wide">{category}</h3>
   </div>
 
   <!-- Skill Badges -->
-  <div class="flex flex-wrap gap-2.5">
+  <div class="flex flex-col gap-2.5">
     {skills.map((skill) => (
       <div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-dark-800/80 border border-zinc-800 hover:border-accent-red/40 transition-colors group">
-        <span class="w-1.5 h-1.5 rounded-full bg-zinc-600 group-hover:bg-accent-red transition-colors"></span>
+        <span>{skill.icon && <Icon name={skill.icon} />}</span>
         <span class="text-sm font-medium text-zinc-300 group-hover:text-white transition-colors">{skill.name}</span>
         {skill.level && (
           <span class="text-[10px] text-zinc-500 font-mono uppercase pl-1 border-l border-zinc-700/60">
