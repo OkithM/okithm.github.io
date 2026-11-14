@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
+
+const socials = [
+  { name: "GitHub", href: "https://github.com/okithm", icon: "mdi:github" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/okith-moksha/", icon: "mdi:linkedin" },
+  { name: "WhatsApp", href: "https://wa.me/+9476400728", icon: "mdi:whatsapp" },
+  { name: "Twitter", href: "https://twitter.com/okithmoksha", icon: "mdi:twitter" },
+  { name: "Email", href: "mailto:okithmoksha@gmail.com", icon: "mdi:email-outline" },
+];
+---
+
+<footer class="relative z-10 w-full border-t border-white/10 bg-pitch/80 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-5 md:px-12 py-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <!-- Brand & Location -->
+      <div class="space-y-2">
+        <a href="/" class="group inline-flex items-center gap-3">
+          <img
+            src="/myLogo.svg"
+            alt="Okith Moksha logo"
+            class="h-8 w-8 transition-transform duration-300 group-hover:scale-105"
+          />
+          <span>
+            Okith<span class="text-accentRed"> Moksha</span>
+          </span>
+        </a>
+        <p class="flex items-center gap-1.5 text-xs text-zinc-400">
+          <Icon name="mdi:map-marker-outline" class="w-4 h-4 text-accentRed" />
+          <span>Bentota, Sri Lanka</span>
+        </p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav aria-label="Footer navigation" class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="hover:text-white transition-colors duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Social Icons -->
+      <div class="flex items-center gap-2.5">
+        {socials.map((social) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.name}
+            class="flex items-center justify-center w-9 h-9 rounded-xl bg-dark-900/80 border border-zinc-800/80 text-zinc-400 hover:text-white hover:border-accent-red/50 transition-all duration-200"
+          >
+            <Icon name={social.icon} class="w-4 h-4" />
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 pt-6 border-t border-zinc-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+      <p>© {new Date().getFullYear()} Okith Moksha. All rights reserved.</p>
+      <a
+        href="#about"
+        class="inline-flex items-center gap-1 text-zinc-400 hover:text-accentRed transition-colors"
+      >
+        <span>Back to top</span>
+        <Icon name="mdi:arrow-up" class="w-3.5 h-3.5" />
+      </a>
+    </div>
+  </div>
+</footer>

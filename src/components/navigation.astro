@@ -1,0 +1,59 @@
+---
+import ButtonPrimary from "./ButtonPrimary.astro";
+---
+
+<!-- Header Wrapper -->
+<header id="main-header" class="sticky top-4 z-50 w-full transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)]">
+    <div id="header-inner" class="mx-auto max-w-5xl px-4 transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)] sm:px-6 lg:px-8">
+        <nav 
+            id="nav-bar" 
+            class="flex flex-wrap items-center justify-between gap-5 border rounded-2xl border-white/10 bg-pitch/80 py-2 px-4 shadow-xl shadow-black/30 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.68,-0.4,0.265,1.35)]" 
+            aria-label="Main navigation"
+        >
+            <a href="/" class="group flex items-center gap-3" aria-label="Okith Moksha home">
+                <img src="/myLogo.svg" alt="" class="h-10 w-10 transition-transform duration-300 group-hover:scale-105" />
+                <span class="text-lg font-semibold tracking-tight text-white">Okith Moksha</span>
+            </a>
+
+            <div class="flex items-center gap-1 text-sm font-medium text-slate-300 sm:gap-2">
+                <a href="#about" class="rounded-lg px-3 py-2 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accentRed-light">About Me</a>
+                <a href="#projects" class="rounded-lg px-3 py-2 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accentRed-light">Projects</a>
+                <a href="#skills" class="rounded-lg px-3 py-2 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accentRed-light">Skills</a>
+            </div>
+
+            <ButtonPrimary href="#contact" class:list={"max-h-12"}>
+                Contact Me 
+                <img src="/icons/right-arrow.png" class="brightness-0 invert w-4" alt="">
+            </ButtonPrimary>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const header = document.getElementById('main-header');
+    const headerInner = document.getElementById('header-inner');
+    const navBar = document.getElementById('nav-bar');
+
+    const handleScroll = () => {
+        if (window.scrollY > 20) {
+            header?.classList.add('top-0', 'shadow-lg');
+            header?.classList.remove('top-4', 'shadow-none');
+            // Scrolled State: Full width, flush top, square corners
+            headerInner?.classList.remove('max-w-5xl', 'px-4', 'sm:px-6', 'lg:px-8');
+            headerInner?.classList.add('max-w-full', 'px-0');
+            navBar?.classList.remove('rounded-2xl', 'shadow-xl');
+            navBar?.classList.add('rounded-none', 'border-x-0', 'border-t-0', 'px-8');
+        } else if (window.scrollY < 10) {
+            header?.classList.remove('top-0', 'shadow-lg');
+            header?.classList.add('top-4', 'shadow-none');
+            // Top State: Floating island card
+            headerInner?.classList.add('max-w-5xl', 'px-4', 'sm:px-6', 'lg:px-8');
+            headerInner?.classList.remove('max-w-full', 'px-0');
+            navBar?.classList.add('rounded-2xl', 'shadow-xl');
+            navBar?.classList.remove('rounded-none', 'border-x-0', 'border-t-0', 'px-8');
+        }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+</script>

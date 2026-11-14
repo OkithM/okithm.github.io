@@ -1,0 +1,8 @@
+---
+import { Icon } from "astro-icon/components";
+const { name, href } = Astro.props;
+---
+
+<a class="w-10 h-10 rounded-full bg-accentRed border border-white/10 flex items-center justify-center transition-transform duration-300 hover:scale-110" href={href} target="_blank" rel="noopener noreferrer">
+    <Icon name={name} class="h-6 w-6" title={name} />
+</a>
